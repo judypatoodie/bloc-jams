@@ -39,14 +39,15 @@
           </tr>
 
             {
-            
+
             this.state.album.songs.map((currentvalue, index)=>
 
-            <tr>
-              <td key={index}> {index + 1} </td>
-              <td key={index}> {currentvalue.title}</td>
-              <td key={index}> {currentvalue.duration}</td>
-            </tr>)
+            <tr key={index}>
+              <td> {index + 1} </td>
+              <td> {currentvalue.title}</td>
+              <td> {currentvalue.duration}</td>
+            </tr>
+              )
             }
 
 
