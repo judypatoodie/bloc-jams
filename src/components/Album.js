@@ -31,12 +31,21 @@
           <col id="song-title-column" />
           <col id="song-duration-column" />
         </colgroup>
-        <tbody>
+      <tbody>
+          <tr>
+            <th>Num</th>
+            <th>Title</th>
+            <th>Duration</th>
+          </tr>
+
             {
-            //this.state.album[0].map((songs) => songs.map((title) => <tr><td>title</td></tr>) )
+            
             this.state.album.songs.map((currentvalue, index)=>
+
             <tr>
-              <td>{currentvalue.title}</td>
+              <td key={index}> {index + 1} </td>
+              <td key={index}> {currentvalue.title}</td>
+              <td key={index}> {currentvalue.duration}</td>
             </tr>)
             }
 
