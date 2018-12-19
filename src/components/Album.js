@@ -1,6 +1,6 @@
  import React, { Component } from 'react';
  import albumData from './../data/albums';
- import LogoNodejs from 'react-ionicons/lib/LogoNodejs'
+
 
  class Album extends Component {
    constructor(props) {
@@ -47,10 +47,9 @@ handleSongClick(song) {
 
 handleIconToggle(song, index){
 const isSameSong = this.state.currentSong === song;
-if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying){
+if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSong){
   return <button className="ion-md-play"></button>;
-}
-else if(this.state.isMouseInside=== index + 1 && this.state.isPLaying) {
+} else if(this.state.isMouseInside=== index + 1 && this.state.isPLaying ) {
   return <button className="ion-md-pause"></button>;
 } else if (isSameSong && this.state.isPlaying){
   return <button className="ion-md-pause"></button>;
@@ -61,8 +60,6 @@ else if(this.state.isMouseInside=== index + 1 && this.state.isPLaying) {
 }
 
 }
-
-
 
 
   render() {
