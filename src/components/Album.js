@@ -1,5 +1,6 @@
  import React, { Component } from 'react';
  import albumData from './../data/albums';
+ import LogoNodejs from 'react-ionicons/lib/LogoNodejs'
 
  class Album extends Component {
    constructor(props) {
@@ -11,7 +12,7 @@
 
      this.state= {
        album:album,
-       currentSong: album.songs[0],
+       currentSong: album.songs[''],
        isPLaying: false,
        isMouseInside: false
      };
@@ -44,14 +45,24 @@ handleSongClick(song) {
   }
 }
 
-
-mouseEnter(){
-  this.setState({ isMouseInside: true });
+handleIconToggle(song, index){
+const isSameSong = this.state.currentSong === song;
+if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying){
+  return <button className="ion-md-play"></button>;
 }
-mouseLeave(){
-
-  this.setState({ isMouseInside: false });
+else if(this.state.isMouseInside=== index + 1 && this.state.isPLaying) {
+  return <button className="ion-md-pause"></button>;
+} else if (isSameSong && this.state.isPlaying){
+  return <button className="ion-md-pause"></button>;
+} else if(isSameSong && !this.state.isPlaying){
+  return <button className="ion-md-play"></button>;
+} else {
+  return index + 1;
 }
+
+}
+
+
 
 
   render() {
@@ -84,12 +95,15 @@ mouseLeave(){
 
             this.state.album.songs.map((song, index)=>
 
-            <tr className="song" key={index} onClick={() => this.handleSongClick(song)}  onMouseEnter={() => this.mouseEnter()} onMouseLeave={() => this.mouseLeave()}>
+            <tr
+              className="song"
+              key={index}
+              onClick={() => this.handleSongClick(song)}
+              onMouseEnter={() => this.setState({ isMouseInside: index + 1 })}
+              onMouseLeave={() => this.setState({ isMouseInside: false })} >
 
               <td className= "song-number">
-            <button className="ion-play"></button> {index}
-
-
+              {this.handleIconToggle(song, index)}
               </td>
               <td className= "song-title"> {song.title}</td>
               <td className= "song-duration"> {song.duration}</td>
