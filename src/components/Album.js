@@ -1,5 +1,6 @@
  import React, { Component } from 'react';
  import albumData from './../data/albums';
+ import PlayerBar from './PlayerBar';
 
 
  class Album extends Component {
@@ -45,16 +46,24 @@ handleSongClick(song) {
   }
 }
 
+handlePrevClick() {
+   const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+   const newIndex = Math.max(0, currentIndex - 1);
+   const newSong = this.state.album.songs[newIndex];
+   this.setSong(newSong);
+   this.play();
+}
+
 handleIconToggle(song, index){
 const isSameSong = this.state.currentSong === song;
 if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSong){
-  return <button className="ion-md-play"></button>;
+  return <span className="ion-md-play"></span>;
 } else if(this.state.isMouseInside=== index + 1 && this.state.isPLaying ) {
-  return <button className="ion-md-pause"></button>;
+  return <span className="ion-md-pause"></span>;
 } else if (isSameSong && this.state.isPlaying){
-  return <button className="ion-md-pause"></button>;
+  return <span className="ion-md-pause"></span>;
 } else if(isSameSong && !this.state.isPlaying){
-  return <button className="ion-md-play"></button>;
+  return <span className="ion-md-play"></span>;
 } else {
   return index + 1;
 }
@@ -113,6 +122,12 @@ if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSon
 
         </tbody>
       </table>
+      <PlayerBar
+      isPlaying={this.state.isPlaying}
+      currentSong={this.state.currentSong}
+      handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+      handlePrevClick={() => this.handlePrevClick()}
+      />
       </section>
     );
   }
