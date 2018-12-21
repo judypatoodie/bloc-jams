@@ -15,11 +15,14 @@
        album:album,
        currentSong: album.songs[''],
        isPLaying: false,
-       isMouseInside: false
+       isMouseInside: false,
+       songLength: album.songs.length
      };
      this.audioElement = document.createElement('audio');
      this.audioElement.src = album.songs[0].audioSrc;
    }
+
+
 
 play(){
   this.audioElement.play();
@@ -46,9 +49,20 @@ handleSongClick(song) {
   }
 }
 
+
 handlePrevClick() {
    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
    const newIndex = Math.max(0, currentIndex - 1);
+   const newSong = this.state.album.songs[newIndex];
+   this.setSong(newSong);
+   this.play();
+}
+
+handleNextClick() {
+   const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+   const nextSong= currentIndex + 1;
+   const num = this.state.songLength;
+   const newIndex = nextSong < num? nextSong : num - 1;
    const newSong = this.state.album.songs[newIndex];
    this.setSong(newSong);
    this.play();
@@ -127,6 +141,8 @@ if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSon
       currentSong={this.state.currentSong}
       handleSongClick={() => this.handleSongClick(this.state.currentSong)}
       handlePrevClick={() => this.handlePrevClick()}
+      handleNextClick={() => this.handleNextClick()}
+
       />
       </section>
     );
