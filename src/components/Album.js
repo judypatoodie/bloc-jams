@@ -15,6 +15,9 @@
        album:album,
        currentSong: album.songs[''],
        isPLaying: false,
+       currentTime: 0,
+       volume: 0,
+       duration: album.songs[0].duration,
        isMouseInside: false,
        songLength: album.songs.length
      };
@@ -22,6 +25,30 @@
      this.audioElement.src = album.songs[0].audioSrc;
    }
 
+componentDidMount() {
+  this.eventListeners = {
+    timeupdate: e => {
+      this.setState({ currentTime: this.audioElement.currentTime });
+    },
+    durationchange: e => {
+      this.setState({ duration: this.audioElement.duration });
+    },
+    volumechange: e=> {
+      this.setState({ volume: this.audioElement.volume});
+    }
+  };
+  this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
+  this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+  this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
+
+}
+
+componentWillUnmount() {
+  this.audioElement.src = null;
+  this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
+  this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+  this.audioElement.removeEVENTlISTENER('volumechange', this.eventListeners.volumechange);
+}
 
 
 play(){
@@ -68,6 +95,13 @@ handleNextClick() {
    this.play();
 }
 
+handleTimeChange(e){
+  const newTime= this.audioElement.duration * e.target.value;
+  this.audioElement.currentTime = newTime;
+  this.setState({ currentTime: newTime});
+  }
+
+
 handleIconToggle(song, index){
 const isSameSong = this.state.currentSong === song;
 if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSong){
@@ -82,6 +116,18 @@ if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSon
   return index + 1;
 }
 
+}
+
+handleVolumeChange(e){
+  const newVolume = e.target.value;
+  this.audioElement.volume = newVolume;
+  this.setState({ volume: newVolume });
+}
+
+formatTime(time){
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time - minutes * 60);
+  return (minutes < 10 ? +minutes : minutes) + ':' + (seconds < 10 ? '0' + seconds : seconds);
 }
 
 
@@ -126,7 +172,7 @@ if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSon
               {this.handleIconToggle(song, index)}
               </td>
               <td className= "song-title"> {song.title}</td>
-              <td className= "song-duration"> {song.duration}</td>
+              <td className= "song-duration"> {this.formatTime(song.duration)}</td>
             </tr>
               )
             }
@@ -139,9 +185,15 @@ if (this.state.isMouseInside=== index + 1 && !this.state.isPLaying && !isSameSon
       <PlayerBar
       isPlaying={this.state.isPlaying}
       currentSong={this.state.currentSong}
+      currentTime={this.audioElement.currentTime}
+      duration={this.audioElement.duration}
+      volume={this.audioElement.volume}
       handleSongClick={() => this.handleSongClick(this.state.currentSong)}
       handlePrevClick={() => this.handlePrevClick()}
       handleNextClick={() => this.handleNextClick()}
+      handleTimeChange={(e) => this.handleTimeChange(e)}
+      handleVolumeChange={(e) => this.handleVolumeChange(e)}
+      formatTime={time => this.formatTime(time)}
 
       />
       </section>
