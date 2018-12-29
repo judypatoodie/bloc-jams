@@ -47,7 +47,7 @@ componentWillUnmount() {
   this.audioElement.src = null;
   this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
   this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
-  this.audioElement.removeEVENTlISTENER('volumechange', this.eventListeners.volumechange);
+  this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
 }
 
 
