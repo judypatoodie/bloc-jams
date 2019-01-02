@@ -13,25 +13,30 @@ class App extends Component {
       <div className="App">
       <header className="headerSection" >
 
-      <nav className="navbar navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-dark bg-dark fixed-top" id="navbar">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-        <HashLink className="nav-link" smooth to="/#landingSection">Home</HashLink>
+        <HashLink className="nav-link" smooth to="/home">Home</HashLink>
+        </li>
+        <li class="nav-item">
+        <HashLink className="nav-link" smooth to="/#landingSection">About</HashLink>
         </li>
           <li class="nav-item">
-          <HashLink className="nav-link" smooth to="/library#librarySection">Music Library</HashLink>
+          <HashLink className="nav-link" smooth to="/library#librarySection">Music</HashLink>
           </li>
 
 
         </ul>
       </nav>
 
-      <header className="masthead">
-        <div>
-            <h1 className="titlename">Bloc Jams!</h1>
 
+        <div className= "headerdiv" >
+          <div className= "top">
+            <h1 className="titlename "> b l o c j a m s. </h1>
+            <p className="subtitle anim-typewriter">where words fail, music speaks </p>
+          </div>
         </div>
-      </header>
+
       </header>
 
 

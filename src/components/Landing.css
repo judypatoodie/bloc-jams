@@ -1,0 +1,29 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 0px;
+    background-color: #8b9183;
+
+}
+
+.wrapper > div {
+  margin: 20px;
+
+
+}
+
+h1 {
+    font-family: 'Major Mono Display', monospace;
+}
+
+.card-header{
+  text-align: center;
+}
+
+ion-icon {
+        font-size: 20px;
+    }
+
+.card-header{
+  font-size: 2vw;
+}

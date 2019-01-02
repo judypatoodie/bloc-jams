@@ -133,27 +133,34 @@ formatTime(time){
 
   render() {
     return (
-      <section className="album">
-      <section id="album-info">
-        <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-        <div className="album-details">
-          <h1 id="album-title">{this.state.album.title}</h1>
+
+
+      <section className="album" >
+
+        <div className="card flex-row flex-wr " >
+
+        <img className="card-img-top" id="album-cover-art" style={{width: '40rem', height: '40rem'}} src={this.state.album.albumCover} alt={this.state.album.title}/>
+
+
+      <div className="album-details card-body">
+          <h1 id="album-title" >{this.state.album.title}</h1>
+
           <h2 className="artist">{this.state.album.artist}</h2>
           <div id="release-info">{this.state.album.releaseInfo}</div>
-        </div>
-      </section>
-      <table id="song-list" align="center">
+
+
+
+      <table className="table table-hover table-striped table-dark" id="song-list" style={{marginTop:'3rem'}}>
         <colgroup>
           <col id="song-number-column" />
           <col id="song-title-column" />
           <col id="song-duration-column" />
         </colgroup>
       <tbody>
-          <tr>
-            <th colspan= "3"> SONGS: </th></tr>
-          <tr>
-            <th>Num</th>
-            <th>Title</th>
+
+          <tr style={{backgroundColor:'#000'}}>
+            <th>#</th>
+            <th>Song</th>
             <th>Duration</th>
           </tr>
 
@@ -177,11 +184,9 @@ formatTime(time){
               )
             }
 
-
-
-
         </tbody>
       </table>
+
       <PlayerBar
       isPlaying={this.state.isPlaying}
       currentSong={this.state.currentSong}
@@ -196,7 +201,12 @@ formatTime(time){
       formatTime={time => this.formatTime(time)}
 
       />
+          </div>
+        </div>
       </section>
+
+
+
     );
   }
 }
