@@ -14,7 +14,9 @@ class Library extends Component {
      return (
 
        <section className="library" id="library">
-
+         <div style= {{backgroundColor:'#8b9183', color:'#fff', height:'4rem', paddingTop:'0.5rem'}}>
+           <h1><ion-icon name="medical"></ion-icon>music </h1>
+         </div>
          {
            this.state.albums.map( (album, index) =>
 
