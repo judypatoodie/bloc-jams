@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <header className="headerSection" >
+      <header className="headerSection col-xs" >
 
       <nav className="navbar navbar-dark bg-dark fixed-top" id="navbar">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -32,7 +32,7 @@ class App extends Component {
 
         <div className= "headerdiv" >
           <div className= "top">
-            <h1 className="titlename "> b l o c j a m s. </h1>
+            <h1 className="titlename"> b l o c j a m s. </h1>
             <p className="subtitle anim-typewriter">where words fail, music speaks </p>
           </div>
         </div>
