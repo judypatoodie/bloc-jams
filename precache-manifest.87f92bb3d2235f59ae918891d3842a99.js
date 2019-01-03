@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/bloc-jams/static/css/main.578c1555.chunk.css"
   },
   {
-    "revision": "2725658c62a0e20d18a559b42c663409",
+    "revision": "18a5a0e19dacebe115f43c383667b3cd",
     "url": "/bloc-jams/index.html"
   }
 ];
