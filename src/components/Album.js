@@ -1,6 +1,7 @@
  import React, { Component } from 'react';
  import albumData from './../data/albums';
  import PlayerBar from './PlayerBar';
+ import albumCoverimg from './../img/01.jpg'
 
 
  class Album extends Component {
@@ -139,7 +140,7 @@ formatTime(time){
 
         <div className="card flex-row flex-wr " >
 
-        <img className="card-img-top" id="album-cover-art" style={{width: '40rem', height: '40rem'}} src={this.state.album.albumCover} alt={this.state.album.title}/>
+        <img className="card-img-top" id="album-cover-art" style={{width: '40rem', height: '40rem'}} src={albumCoverimg} alt={this.state.album.title}/>
 
 
       <div className="album-details card-body">
