@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project is of a music website where you can play, pause, skip, change volumne, etc. on a media player of several songs.
+
 ## Available Scripts
 
 In the project directory, you can run:
