@@ -32,7 +32,7 @@ class App extends Component {
 
         <div className= "headerdiv" >
           <div className= "top">
-            <h1 className="titlename"> b l o c j a m s. </h1>
+            <h1 className="titlename"> j u s t j a m s. </h1>
             <p className="subtitle anim-typewriter">where words fail, music speaks </p>
           </div>
         </div>

@@ -139,7 +139,7 @@ formatTime(time){
       <section className="album col-xs-4" >
         <div className="card flex-row flex-wr col-sm img-fluid" >
 
-        <img className="card-img-top img-fluid" id="album-cover-art"  src={this.state.album.albumCover} alt={this.state.album.title}/>
+        <img className="card-img-top img-fluid d-none d-md-block" id="album-cover-art"  src={this.state.album.albumCover} alt={this.state.album.title}/>
 
 
       <div className="album-details card-body">
