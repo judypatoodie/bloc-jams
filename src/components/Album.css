@@ -1,0 +1,8 @@
+.album{
+  width:100%;
+}
+
+#album-cover-art{
+  width: 40%;
+  margin-left: -50px;
+}

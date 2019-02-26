@@ -1,6 +1,7 @@
  import React, { Component } from 'react';
  import albumData from './../data/albums';
  import PlayerBar from './PlayerBar';
+ import './Album.css';
 
 
  class Album extends Component {
@@ -135,11 +136,10 @@ formatTime(time){
     return (
 
 
-      <section className="album" >
+      <section className="album col-xs-4" >
+        <div className="card flex-row flex-wr col-sm img-fluid" >
 
-        <div className="card flex-row flex-wr " >
-
-        <img className="card-img-top" id="album-cover-art" style={{width: '40rem', height: '40rem'}} src={this.state.album.albumCover} alt={this.state.album.title}/>
+        <img className="card-img-top img-fluid" id="album-cover-art"  src={this.state.album.albumCover} alt={this.state.album.title}/>
 
 
       <div className="album-details card-body">
